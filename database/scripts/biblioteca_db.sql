@@ -146,9 +146,9 @@ INSERT INTO libros (titulo, autor, categoria, stock, anio_publicacion, isbn, edi
 ('Orgullo y Prejuicio', 'Jane Austen', 'Clásicos', 2, 1813, '978-0141439518', 'Penguin Classics');
 
 -- Insertar préstamos de prueba
-INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion_esperada, estado, observaciones) VALUES
-(3, 1, DATE_SUB(CURDATE(), INTERVAL 5 DAY), DATE_ADD(CURDATE(), INTERVAL 9 DAY), 'PENDIENTE', 'Primer préstamo'),
-(4, 3, DATE_SUB(CURDATE(), INTERVAL 10 DAY), DATE_SUB(CURDATE(), INTERVAL 3 DAY), 'RETRASADO', 'Préstamo retrasado'),
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion_esperada, fecha_devolucion_real, estado, observaciones) VALUES
+(3, 1, DATE_SUB(CURDATE(), INTERVAL 5 DAY), DATE_ADD(CURDATE(), INTERVAL 9 DAY), NULL, 'PENDIENTE', 'Primer préstamo'),
+(4, 3, DATE_SUB(CURDATE(), INTERVAL 10 DAY), DATE_SUB(CURDATE(), INTERVAL 3 DAY), NULL, 'RETRASADO', 'Préstamo retrasado'),
 (3, 5, DATE_SUB(CURDATE(), INTERVAL 20 DAY), DATE_SUB(CURDATE(), INTERVAL 6 DAY), CURDATE(), 'DEVUELTO', 'Devuelto a tiempo');
 
 -- ============================================
