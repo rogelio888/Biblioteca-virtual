@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" style="-fx-padding: 30; -fx-background-color: white;"
+      prefWidth="600.0" prefHeight="550.0"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.vista.PrestamoFormController">
+
+    <!-- TÍTULO -->
+    <Label text="Nuevo Préstamo" styleClass="label-title">
+        <font>
+            <Font name="System Bold" size="24.0" />
+        </font>
+    </Label>
+
+    <Separator />
+
+    <!-- FORMULARIO -->
+    <GridPane hgap="15.0" vgap="15.0">
+
+        <!-- Usuario -->
+        <Label text="* Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="cbUsuario" promptText="Selecciona un usuario"
+                  GridPane.columnIndex="1" GridPane.rowIndex="0"
+                  prefHeight="35.0" prefWidth="400.0" GridPane.columnSpan="2">
+        </ComboBox>
+
+        <!-- Libro -->
+        <Label text="* Libro:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="cbLibro" promptText="Selecciona un libro"
+                  GridPane.columnIndex="1" GridPane.rowIndex="1"
+                  prefHeight="35.0" prefWidth="400.0" GridPane.columnSpan="2">
+        </ComboBox>
+
+        <!-- Stock disponible -->
+        <Label text="Stock:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblStock" text="—" style="-fx-text-fill: #666;"
+               GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Label>
+
+        <!-- Días del préstamo -->
+        <Label text="* Días:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Spinner fx:id="spDias" editable="true"
+                 GridPane.columnIndex="1" GridPane.rowIndex="3"
+                 prefWidth="130.0" prefHeight="35.0">
+        </Spinner>
+        <Label text="(Generalmente 14 días)" style="-fx-text-fill: #999;"
+               GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Label>
+
+        <!-- Fecha de préstamo -->
+        <Label text="Fecha Préstamo:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <DatePicker fx:id="dpFechaPrestamo" editable="false"
+                    GridPane.columnIndex="1" GridPane.rowIndex="4"
+                    prefHeight="35.0" prefWidth="200.0">
+        </DatePicker>
+
+        <!-- Fecha de devolución (calculada) -->
+        <Label text="Fecha Devolución:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblFechaDevolucion" text="—" style="-fx-text-fill: #2196F3; -fx-font-weight: bold;"
+               GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+
+        <!-- Observaciones -->
+        <Label text="Observaciones:" GridPane.columnIndex="0" GridPane.rowIndex="6">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextArea fx:id="txtObservaciones" promptText="Observaciones opcionales..."
+                  GridPane.columnIndex="1" GridPane.rowIndex="6"
+                  prefHeight="80.0" prefWidth="400.0" GridPane.columnSpan="2"
+                  wrapText="true">
+        </TextArea>
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="120.0" prefWidth="140.0" />
+            <ColumnConstraints minWidth="200.0" prefWidth="250.0" />
+            <ColumnConstraints minWidth="100.0" prefWidth="150.0" />
+        </columnConstraints>
+    </GridPane>
+
+    <!-- Nota de campos obligatorios -->
+    <Label text="* Campos obligatorios" textFill="#999999">
+        <font>
+            <Font size="11.0" />
+        </font>
+    </Label>
+
+    <!-- Mensaje de error/éxito -->
+    <Label fx:id="lblMensaje" wrapText="true" visible="false">
+        <font>
+            <Font size="12.0" />
+        </font>
+    </Label>
+
+    <Separator />
+
+    <!-- BOTONES -->
+    <HBox spacing="15.0" alignment="CENTER_RIGHT">
+        <Button text="💾 Registrar Préstamo" onAction="#handleGuardar"
+                styleClass="button-success"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"
+                defaultButton="true">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+            </padding>
+        </Button>
+
+        <Button text="❌ Cancelar" onAction="#handleCancelar"
+                style="-fx-background-color: #757575; -fx-text-fill: white;">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+            </padding>
+        </Button>
+    </HBox>
+
+</VBox>

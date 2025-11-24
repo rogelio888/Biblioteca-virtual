@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" style="-fx-padding: 20;"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.vista.UsuariosController">
+
+    <!-- ENCABEZADO -->
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <Label text="👥 Gestión de Usuarios" styleClass="label-header">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+
+        <!-- Spacer -->
+        <Region HBox.hgrow="ALWAYS" />
+
+        <!-- Botón Nuevo Usuario -->
+        <Button fx:id="btnNuevo" text="➕ Nuevo Usuario"
+                onAction="#handleNuevo"
+                styleClass="button-success"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+        </Button>
+    </HBox>
+
+    <Separator />
+
+    <!-- PANEL DE BÚSQUEDA -->
+    <VBox spacing="15.0" styleClass="panel"
+          style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-padding: 20;">
+
+        <Label text="🔍 Búsqueda y Filtros" style="-fx-font-weight: bold; -fx-font-size: 14;">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <HBox spacing="15.0" alignment="CENTER_LEFT">
+            <!-- Campo de búsqueda -->
+            <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                <Label text="Buscar por nombre:">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txtBuscar" promptText="Ingresa nombre o apellido..."
+                           styleClass="text-field" prefHeight="35.0">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </TextField>
+            </VBox>
+
+            <!-- Filtro por tipo -->
+            <VBox spacing="5.0">
+                <Label text="Tipo de Usuario:">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="cbTipo" promptText="Todos"
+                          prefWidth="200.0" prefHeight="35.0" />
+            </VBox>
+
+            <!-- Filtro por estado -->
+            <VBox spacing="5.0">
+                <Label text="Estado:">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="cbEstado" promptText="Todos"
+                          prefWidth="150.0" prefHeight="35.0" />
+            </VBox>
+
+            <!-- Botones de búsqueda -->
+            <VBox spacing="5.0" alignment="BOTTOM_LEFT">
+                <Label text=" " />
+                <HBox spacing="10.0">
+                    <Button text="🔍 Buscar" onAction="#handleBuscar"
+                            style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;"
+                            prefHeight="35.0">
+                        <padding>
+                            <Insets left="15.0" right="15.0" />
+                        </padding>
+                    </Button>
+                    <Button text="🔄 Limpiar" onAction="#handleLimpiar"
+                            style="-fx-background-color: #757575; -fx-text-fill: white;"
+                            prefHeight="35.0">
+                        <padding>
+                            <Insets left="15.0" right="15.0" />
+                        </padding>
+                    </Button>
+                </HBox>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- TABLA DE USUARIOS -->
+    <VBox VBox.vgrow="ALWAYS" spacing="10.0">
+        <Label text="📋 Listado de Usuarios" style="-fx-font-weight: bold; -fx-font-size: 14;">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <TableView fx:id="tablaUsuarios" VBox.vgrow="ALWAYS"
+                   style="-fx-border-color: #ddd; -fx-border-radius: 5;">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50.0" />
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150.0" />
+                <TableColumn fx:id="colApellido" text="Apellido" prefWidth="150.0" />
+                <TableColumn fx:id="colTipo" text="Tipo" prefWidth="130.0" />
+                <TableColumn fx:id="colEmail" text="Email" prefWidth="200.0" />
+                <TableColumn fx:id="colTelefono" text="Teléfono" prefWidth="120.0" />
+                <TableColumn fx:id="colUsername" text="Usuario" prefWidth="120.0" />
+                <TableColumn fx:id="colFechaRegistro" text="Fecha Registro" prefWidth="120.0" />
+                <TableColumn fx:id="colActivo" text="Estado" prefWidth="90.0" />
+            </columns>
+        </TableView>
+
+        <!-- Panel de botones de acción -->
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+            <Label fx:id="lblTotal" text="Total: 0 usuarios" style="-fx-text-fill: #666;">
+                <font>
+                    <Font size="12.0" />
+                </font>
+            </Label>
+
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Button fx:id="btnEditar" text="✏️ Editar"
+                    onAction="#handleEditar"
+                    style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold;"
+                    disable="true">
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </Button>
+
+            <Button fx:id="btnCambiarEstado" text="🔄 Cambiar Estado"
+                    onAction="#handleCambiarEstado"
+                    style="-fx-background-color: #9C27B0; -fx-text-fill: white; -fx-font-weight: bold;"
+                    disable="true">
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </Button>
+
+            <Button fx:id="btnEliminar" text="🗑️ Eliminar"
+                    onAction="#handleEliminar"
+                    styleClass="button-danger"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;"
+                    disable="true">
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </Button>
+
+            <Button text="📊 Ver Detalles"
+                    onAction="#handleVerDetalles"
+                    style="-fx-background-color: #00ACC1; -fx-text-fill: white; -fx-font-weight: bold;"
+                    fx:id="btnDetalles"
+                    disable="true">
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+</VBox>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" style="-fx-padding: 30; -fx-background-color: white;"
+      prefWidth="600.0" prefHeight="650.0"
+      xmlns="http://javafx.com/javafx/17 "
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.vista.LibroFormController">
+
+    <!-- TÍTULO -->
+    <Label fx:id="lblTitulo" text="Nuevo Libro" styleClass="label-title">
+        <font>
+            <Font name="System Bold" size="24.0" />
+        </font>
+    </Label>
+
+    <Separator />
+
+    <!-- FORMULARIO -->
+    <GridPane hgap="15.0" vgap="15.0">
+
+        <!-- Título del libro -->
+        <Label text="* Título:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtTitulo" promptText="Ingresa el título del libro"
+                   GridPane.columnIndex="1" GridPane.rowIndex="0"
+                   prefHeight="35.0" GridPane.columnSpan="2">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <!-- Autor -->
+        <Label text="* Autor:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtAutor" promptText="Ingresa el autor"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1"
+                   prefHeight="35.0" GridPane.columnSpan="2">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <!-- Categoría -->
+        <Label text="* Categoría:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="cbCategoria" editable="true"
+                  promptText="Selecciona o escribe una categoría"
+                  GridPane.columnIndex="1" GridPane.rowIndex="2"
+                  prefHeight="35.0" prefWidth="400.0" GridPane.columnSpan="2">
+        </ComboBox>
+
+        <!-- Editorial -->
+        <Label text="Editorial:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtEditorial" promptText="Ingresa la editorial"
+                   GridPane.columnIndex="1" GridPane.rowIndex="3"
+                   prefHeight="35.0" GridPane.columnSpan="2">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <!-- ISBN -->
+        <Label text="* ISBN:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtISBN" promptText="Ej: 978-0-13-235088-4"
+                   GridPane.columnIndex="1" GridPane.rowIndex="4"
+                   prefHeight="35.0" prefWidth="250.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <!-- Año de publicación -->
+        <Label text="* Año:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin>
+        </Label>
+        <Spinner fx:id="spAnio" editable="true"
+                 GridPane.columnIndex="2" GridPane.rowIndex="4"
+                 prefWidth="130.0" prefHeight="35.0">
+            <GridPane.margin>
+                <Insets left="60.0" />
+            </GridPane.margin>
+        </Spinner>
+
+        <!-- Stock -->
+        <Label text="* Stock:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Spinner fx:id="spStock" editable="true"
+                 GridPane.columnIndex="1" GridPane.rowIndex="5"
+                 prefWidth="130.0" prefHeight="35.0">
+        </Spinner>
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="100.0" prefWidth="120.0" />
+            <ColumnConstraints minWidth="200.0" prefWidth="250.0" />
+            <ColumnConstraints minWidth="100.0" prefWidth="150.0" />
+        </columnConstraints>
+    </GridPane>
+
+    <!-- Nota de campos obligatorios -->
+    <Label text="* Campos obligatorios" textFill="#999999">
+        <font>
+            <Font size="11.0" />
+        </font>
+    </Label>
+
+    <!-- Mensaje de error/éxito -->
+    <Label fx:id="lblMensaje" wrapText="true" visible="false">
+        <font>
+            <Font size="12.0" />
+        </font>
+    </Label>
+
+    <Separator />
+
+    <!-- BOTONES -->
+    <HBox spacing="15.0" alignment="CENTER_RIGHT">
+        <Button text="💾 Guardar" onAction="#handleGuardar"
+                styleClass="button-success"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"
+                defaultButton="true">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+            </padding>
+        </Button>
+
+        <Button text="❌ Cancelar" onAction="#handleCancelar"
+                style="-fx-background-color: #757575; -fx-text-fill: white;">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+            </padding>
+        </Button>
+    </HBox>
+
+</VBox>

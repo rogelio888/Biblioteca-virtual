@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" style="-fx-padding: 30; -fx-background-color: white;"
+      prefWidth="650.0" prefHeight="700.0"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.vista.UsuarioFormController">
+
+    <!-- TÍTULO -->
+    <Label fx:id="lblTitulo" text="Nuevo Usuario" styleClass="label-title">
+        <font>
+            <Font name="System Bold" size="24.0" />
+        </font>
+    </Label>
+
+    <Separator />
+
+    <!-- FORMULARIO -->
+    <GridPane hgap="15.0" vgap="15.0">
+
+        <!-- Nombre -->
+        <Label text="* Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtNombre" promptText="Ingresa el nombre"
+                   GridPane.columnIndex="1" GridPane.rowIndex="0"
+                   prefHeight="35.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <!-- Apellido -->
+        <Label text="* Apellido:" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtApellido" promptText="Ingresa el apellido"
+                   GridPane.columnIndex="3" GridPane.rowIndex="0"
+                   prefHeight="35.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <!-- Tipo de Usuario -->
+        <Label text="* Tipo:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="cbTipo" promptText="Selecciona el tipo"
+                  GridPane.columnIndex="1" GridPane.rowIndex="1"
+                  prefHeight="35.0" prefWidth="250.0">
+        </ComboBox>
+
+        <!-- Email -->
+        <Label text="* Email:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtEmail" promptText="ejemplo@correo.com"
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"
+                   prefHeight="35.0" GridPane.columnSpan="3">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <!-- Teléfono -->
+        <Label text="Teléfono:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtTelefono" promptText="Ej: 555-1234"
+                   GridPane.columnIndex="1" GridPane.rowIndex="3"
+                   prefHeight="35.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <!-- Dirección -->
+        <Label text="Dirección:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtDireccion" promptText="Ingresa la dirección"
+                   GridPane.columnIndex="1" GridPane.rowIndex="4"
+                   prefHeight="35.0" GridPane.columnSpan="3">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="100.0" prefWidth="120.0" />
+            <ColumnConstraints minWidth="150.0" prefWidth="200.0" />
+            <ColumnConstraints minWidth="80.0" prefWidth="100.0" />
+            <ColumnConstraints minWidth="150.0" prefWidth="200.0" />
+        </columnConstraints>
+    </GridPane>
+
+    <Separator />
+
+    <!-- CREDENCIALES DE ACCESO -->
+    <Label text="🔐 Credenciales de Acceso" style="-fx-font-weight: bold; -fx-font-size: 16;">
+        <font>
+            <Font name="System Bold" size="16.0" />
+        </font>
+    </Label>
+
+    <GridPane hgap="15.0" vgap="15.0">
+
+        <!-- Username -->
+        <Label text="* Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtUsername" promptText="Nombre de usuario para login"
+                   GridPane.columnIndex="1" GridPane.rowIndex="0"
+                   prefHeight="35.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+
+        <!-- Password -->
+        <Label text="* Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <PasswordField fx:id="txtPassword" promptText="Mínimo 6 caracteres"
+                       GridPane.columnIndex="1" GridPane.rowIndex="1"
+                       prefHeight="35.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </PasswordField>
+
+        <!-- Confirmar Password -->
+        <Label text="* Confirmar:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <PasswordField fx:id="txtConfirmarPassword" promptText="Repite la contraseña"
+                       GridPane.columnIndex="3" GridPane.rowIndex="1"
+                       prefHeight="35.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </PasswordField>
+
+        <!-- Estado -->
+        <Label text="Estado:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <CheckBox fx:id="chkActivo" text="Usuario Activo" selected="true"
+                  GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </CheckBox>
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="100.0" prefWidth="120.0" />
+            <ColumnConstraints minWidth="150.0" prefWidth="200.0" />
+            <ColumnConstraints minWidth="80.0" prefWidth="100.0" />
+            <ColumnConstraints minWidth="150.0" prefWidth="200.0" />
+        </columnConstraints>
+    </GridPane>
+
+    <!-- Nota de campos obligatorios -->
+    <Label text="* Campos obligatorios" textFill="#999999">
+        <font>
+            <Font size="11.0" />
+        </font>
+    </Label>
+
+    <!-- Mensaje de error/éxito -->
+    <Label fx:id="lblMensaje" wrapText="true" visible="false">
+        <font>
+            <Font size="12.0" />
+        </font>
+    </Label>
+
+    <Separator />
+
+    <!-- BOTONES -->
+    <HBox spacing="15.0" alignment="CENTER_RIGHT">
+        <Button text="💾 Guardar" onAction="#handleGuardar"
+                styleClass="button-success"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"
+                defaultButton="true">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+            </padding>
+        </Button>
+
+        <Button text="❌ Cancelar" onAction="#handleCancelar"
+                style="-fx-background-color: #757575; -fx-text-fill: white;">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+            </padding>
+        </Button>
+    </HBox>
+
+</VBox>

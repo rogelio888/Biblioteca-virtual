@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="root"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.biblioteca.vista.LoginController">
+
+    <!-- Panel izquierdo decorativo -->
+    <VBox alignment="CENTER" prefHeight="600.0" prefWidth="350.0"
+          style="-fx-background-color: linear-gradient(to bottom, #2196F3, #1976D2);">
+        <Label text="Biblioteca" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="40.0" />
+            </font>
+        </Label>
+        <Label text="Inteligente 1.0" textFill="WHITE">
+            <font>
+                <Font size="24.0" />
+            </font>
+            <VBox.margin>
+                <Insets top="-10.0" />
+            </VBox.margin>
+        </Label>
+        <Label text="Sistema de Gestión de Biblioteca" textFill="WHITE"
+               wrapText="true" textAlignment="CENTER" maxWidth="300.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+        </Label>
+    </VBox>
+
+    <!-- Panel derecho - Formulario de login -->
+    <VBox alignment="CENTER" layoutX="350.0" prefHeight="600.0" prefWidth="450.0"
+          spacing="20.0" styleClass="panel">
+        <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+        </padding>
+
+        <!-- Título -->
+        <Label text="Iniciar Sesión" styleClass="label-title">
+            <font>
+                <Font name="System Bold" size="28.0" />
+            </font>
+        </Label>
+
+        <Label text="Ingresa tus credenciales para continuar" textFill="#666666">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <VBox.margin>
+                <Insets top="-15.0" bottom="10.0" />
+            </VBox.margin>
+        </Label>
+
+        <!-- Campo Usuario -->
+        <VBox spacing="8.0">
+            <Label text="Usuario:" styleClass="label">
+                <font>
+                    <Font name="System Bold" size="13.0" />
+                </font>
+            </Label>
+            <TextField fx:id="txtUsuario" promptText="Ingresa tu usuario"
+                       styleClass="text-field" prefHeight="40.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+        </VBox>
+
+        <!-- Campo Contraseña -->
+        <VBox spacing="8.0">
+            <Label text="Contraseña:" styleClass="label">
+                <font>
+                    <Font name="System Bold" size="13.0" />
+                </font>
+            </Label>
+            <PasswordField fx:id="txtPassword" promptText="Ingresa tu contraseña"
+                           styleClass="text-field" prefHeight="40.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </PasswordField>
+        </VBox>
+
+        <!-- Mensaje de error -->
+        <Label fx:id="lblMensaje" textFill="RED" wrapText="true"
+               maxWidth="350.0" textAlignment="CENTER" visible="false">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+
+        <!-- Botón de login -->
+        <Button fx:id="btnLogin" text="INICIAR SESIÓN" onAction="#handleLogin"
+                styleClass="button" prefWidth="350.0" prefHeight="45.0"
+                defaultButton="true">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+
+        <!-- Información de usuarios de prueba -->
+        <VBox spacing="5.0" alignment="CENTER">
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+            <Label text="Usuarios de prueba:" textFill="#999999">
+                <font>
+                    <Font size="11.0" />
+                </font>
+            </Label>
+            <Label text="admin / admin123 (Administrador)" textFill="#666666">
+                <font>
+                    <Font size="11.0" />
+                </font>
+            </Label>
+            <Label text="mgonzalez / biblio123 (Bibliotecario)" textFill="#666666">
+                <font>
+                    <Font size="11.0" />
+                </font>
+            </Label>
+            <Label text="amartinez / lector123 (Lector)" textFill="#666666">
+                <font>
+                    <Font size="11.0" />
+                </font>
+            </Label>
+        </VBox>
+    </VBox>
+</AnchorPane>

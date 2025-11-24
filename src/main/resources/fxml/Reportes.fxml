@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="30.0" style="-fx-padding: 40;" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.vista.ReportesController">
+
+    <!-- TÍTULO -->
+    <Label text="📄 Generación de Reportes" styleClass="label-header">
+        <font>
+            <Font name="System Bold" size="28.0" />
+        </font>
+    </Label>
+
+    <Label text="Genera reportes en formato PDF con información del sistema"
+           style="-fx-text-fill: #666;">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Label>
+
+    <Separator prefWidth="600.0" />
+
+    <!-- OPCIONES DE REPORTES -->
+    <VBox spacing="20.0" alignment="CENTER" prefWidth="600.0">
+
+        <!-- Reporte de Libros -->
+        <VBox spacing="10.0" styleClass="panel"
+              style="-fx-background-color: white; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 10; -fx-padding: 25;">
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Label text="📚" style="-fx-font-size: 40;" />
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Reporte de Libros" style="-fx-font-size: 18; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Label>
+                    <Label text="Lista completa de todos los libros con stock y categorías"
+                           style="-fx-text-fill: #666;">
+                        <font>
+                            <Font size="12.0" />
+                        </font>
+                    </Label>
+                </VBox>
+                <Button text="📄 Generar PDF" onAction="#generarReporteLibros"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </Button>
+            </HBox>
+        </VBox>
+
+        <!-- Reporte de Usuarios -->
+        <VBox spacing="10.0" styleClass="panel"
+              style="-fx-background-color: white; -fx-border-color: #4CAF50; -fx-border-width: 2; -fx-border-radius: 10; -fx-padding: 25;">
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Label text="👥" style="-fx-font-size: 40;" />
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Reporte de Usuarios" style="-fx-font-size: 18; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Label>
+                    <Label text="Lista de usuarios activos con sus datos de contacto"
+                           style="-fx-text-fill: #666;">
+                        <font>
+                            <Font size="12.0" />
+                        </font>
+                    </Label>
+                </VBox>
+                <Button text="📄 Generar PDF" onAction="#generarReporteUsuarios"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </Button>
+            </HBox>
+        </VBox>
+
+        <!-- Reporte de Préstamos Activos -->
+        <VBox spacing="10.0" styleClass="panel"
+              style="-fx-background-color: white; -fx-border-color: #FF9800; -fx-border-width: 2; -fx-border-radius: 10; -fx-padding: 25;">
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Label text="📋" style="-fx-font-size: 40;" />
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Reporte de Préstamos Activos" style="-fx-font-size: 18; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Label>
+                    <Label text="Préstamos pendientes y fechas de devolución"
+                           style="-fx-text-fill: #666;">
+                        <font>
+                            <Font size="12.0" />
+                        </font>
+                    </Label>
+                </VBox>
+                <Button text="📄 Generar PDF" onAction="#generarReportePrestamosActivos"
+                        style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold;">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </Button>
+            </HBox>
+        </VBox>
+
+        <!-- Reporte de Préstamos Retrasados -->
+        <VBox spacing="10.0" styleClass="panel"
+              style="-fx-background-color: white; -fx-border-color: #f44336; -fx-border-width: 2; -fx-border-radius: 10; -fx-padding: 25;">
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Label text="⚠️" style="-fx-font-size: 40;" />
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Reporte de Préstamos Retrasados" style="-fx-font-size: 18; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Label>
+                    <Label text="Préstamos vencidos que requieren atención"
+                           style="-fx-text-fill: #666;">
+                        <font>
+                            <Font size="12.0" />
+                        </font>
+                    </Label>
+                </VBox>
+                <Button text="📄 Generar PDF" onAction="#generarReportePrestamosRetrasados"
+                        style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </Button>
+            </HBox>
+        </VBox>
+
+    </VBox>
+
+    <!-- Mensaje de estado -->
+    <Label fx:id="lblMensaje" wrapText="true" textAlignment="CENTER"
+           maxWidth="600.0" visible="false">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Label>
+
+</VBox>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" style="-fx-padding: 20;"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.vista.PrestamosController">
+
+    <!-- ENCABEZADO -->
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <Label text="📋 Gestión de Préstamos" styleClass="label-header">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+
+        <!-- Spacer -->
+        <Region HBox.hgrow="ALWAYS" />
+
+        <!-- Botón Nuevo Préstamo -->
+        <Button fx:id="btnNuevo" text="➕ Nuevo Préstamo"
+                onAction="#handleNuevo"
+                styleClass="button-success"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+        </Button>
+    </HBox>
+
+    <Separator />
+
+    <!-- PANEL DE FILTROS -->
+    <VBox spacing="15.0" styleClass="panel"
+          style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-padding: 20;">
+
+        <Label text="🔍 Filtros" style="-fx-font-weight: bold; -fx-font-size: 14;">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <HBox spacing="15.0" alignment="CENTER_LEFT">
+            <!-- Filtro por estado -->
+            <VBox spacing="5.0">
+                <Label text="Estado:">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="cbEstado" promptText="Todos"
+                          prefWidth="200.0" prefHeight="35.0" />
+            </VBox>
+
+            <!-- Botones de acción rápida -->
+            <VBox spacing="5.0" alignment="BOTTOM_LEFT">
+                <Label text=" " />
+                <HBox spacing="10.0">
+                    <Button text="📋 Todos" onAction="#mostrarTodos"
+                            style="-fx-background-color: #2196F3; -fx-text-fill: white;"
+                            prefHeight="35.0">
+                        <padding>
+                            <Insets left="15.0" right="15.0" />
+                        </padding>
+                    </Button>
+                    <Button text="⚠ Retrasados" onAction="#mostrarRetrasados"
+                            style="-fx-background-color: #f44336; -fx-text-fill: white;"
+                            prefHeight="35.0">
+                        <padding>
+                            <Insets left="15.0" right="15.0" />
+                        </padding>
+                    </Button>
+                    <Button text="✓ Activos" onAction="#mostrarActivos"
+                            style="-fx-background-color: #FF9800; -fx-text-fill: white;"
+                            prefHeight="35.0">
+                        <padding>
+                            <Insets left="15.0" right="15.0" />
+                        </padding>
+                    </Button>
+                </HBox>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- TABLA DE PRÉSTAMOS -->
+    <VBox VBox.vgrow="ALWAYS" spacing="10.0">
+        <Label text="📋 Listado de Préstamos" style="-fx-font-weight: bold; -fx-font-size: 14;">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <TableView fx:id="tablaPrestamos" VBox.vgrow="ALWAYS"
+                   style="-fx-border-color: #ddd; -fx-border-radius: 5;">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50.0" />
+                <TableColumn fx:id="colUsuario" text="Usuario" prefWidth="180.0" />
+                <TableColumn fx:id="colLibro" text="Libro" prefWidth="200.0" />
+                <TableColumn fx:id="colFechaPrestamo" text="Fecha Préstamo" prefWidth="120.0" />
+                <TableColumn fx:id="colFechaDevolucion" text="Fecha Devolución" prefWidth="130.0" />
+                <TableColumn fx:id="colEstado" text="Estado" prefWidth="110.0" />
+                <TableColumn fx:id="colDiasRestantes" text="Días Rest." prefWidth="90.0" />
+            </columns>
+        </TableView>
+
+        <!-- Panel de botones de acción -->
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+            <Label fx:id="lblTotal" text="Total: 0 préstamos" style="-fx-text-fill: #666;">
+                <font>
+                    <Font size="12.0" />
+                </font>
+            </Label>
+
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Button fx:id="btnDevolver" text="✅ Registrar Devolución"
+                    onAction="#handleDevolver"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"
+                    disable="true">
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </Button>
+
+            <Button fx:id="btnRenovar" text="🔄 Renovar"
+                    onAction="#handleRenovar"
+                    style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold;"
+                    disable="true">
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </Button>
+
+            <Button fx:id="btnEliminar" text="🗑️ Eliminar"
+                    onAction="#handleEliminar"
+                    styleClass="button-danger"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;"
+                    disable="true">
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </Button>
+
+            <Button text="📊 Ver Detalles"
+                    onAction="#handleVerDetalles"
+                    style="-fx-background-color: #9C27B0; -fx-text-fill: white; -fx-font-weight: bold;"
+                    fx:id="btnDetalles"
+                    disable="true">
+                <padding>
+                    <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
+                </padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+</VBox>

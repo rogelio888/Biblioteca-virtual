@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="1200.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.biblioteca.vista.DashboardController">
+
+    <!-- BARRA SUPERIOR -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0"
+              style="-fx-background-color: #2196F3; -fx-padding: 15;">
+            <Label text="📚 Biblioteca Inteligente 1.0" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="20.0" />
+                </font>
+            </Label>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <VBox alignment="CENTER_RIGHT" spacing="2.0">
+                <Label fx:id="lblUsuario" text="Usuario" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblRol" text="Rol" textFill="#E3F2FD">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                </Label>
+            </VBox>
+
+            <Button fx:id="btnCerrarSesion" text="Cerrar Sesión"
+                    onAction="#handleCerrarSesion"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;">
+                <font>
+                    <Font size="12.0" />
+                </font>
+            </Button>
+        </HBox>
+    </top>
+
+    <!-- MENÚ LATERAL -->
+    <left>
+        <VBox spacing="10.0" style="-fx-background-color: #f5f5f5; -fx-padding: 20;">
+            <Label text="MENÚ PRINCIPAL" style="-fx-font-weight: bold; -fx-text-fill: #666;">
+                <font>
+                    <Font size="12.0" />
+                </font>
+            </Label>
+
+            <Separator />
+
+            <Button fx:id="btnDashboard" text="📊 Dashboard"
+                    onAction="#mostrarDashboard"
+                    prefWidth="200.0" prefHeight="40.0" alignment="CENTER_LEFT"
+                    style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="btnLibros" text="📚 Gestión de Libros"
+                    onAction="#mostrarLibros"
+                    prefWidth="200.0" prefHeight="40.0" alignment="CENTER_LEFT"
+                    style="-fx-background-color: white; -fx-border-color: #ddd;">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="btnUsuarios" text="👥 Gestión de Usuarios"
+                    onAction="#mostrarUsuarios"
+                    prefWidth="200.0" prefHeight="40.0" alignment="CENTER_LEFT"
+                    style="-fx-background-color: white; -fx-border-color: #ddd;">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="btnPrestamos" text="📋 Gestión de Préstamos"
+                    onAction="#mostrarPrestamos"
+                    prefWidth="200.0" prefHeight="40.0" alignment="CENTER_LEFT"
+                    style="-fx-background-color: white; -fx-border-color: #ddd;">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Button>
+
+            <Separator />
+
+            <Button fx:id="btnReportes" text="📄 Reportes"
+                    onAction="#mostrarReportes"
+                    prefWidth="200.0" prefHeight="40.0" alignment="CENTER_LEFT"
+                    style="-fx-background-color: white; -fx-border-color: #ddd;">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Button>
+        </VBox>
+    </left>
+
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <StackPane fx:id="contenedorPrincipal" style="-fx-background-color: white;">
+
+            <VBox fx:id="vistaDashboard" alignment="CENTER" spacing="30.0"
+                  style="-fx-padding: 40;">
+
+                <Label text="Panel de Control" styleClass="label-title">
+                    <font>
+                        <Font name="System Bold" size="32.0" />
+                    </font>
+                </Label>
+
+                <GridPane hgap="20.0" vgap="20.0" alignment="CENTER">
+
+                    <VBox alignment="CENTER" spacing="10.0"
+                          style="-fx-background-color: #E3F2FD; -fx-padding: 30; -fx-background-radius: 10;"
+                          prefWidth="200.0" prefHeight="150.0" GridPane.columnIndex="0">
+                        <Label text="📚" style="-fx-font-size: 40;" />
+                        <Label fx:id="lblTotalLibros" text="0"
+                               style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: #1976D2;" />
+                        <Label text="Total Libros" style="-fx-font-size: 14; -fx-text-fill: #666;" />
+                    </VBox>
+
+                    <VBox alignment="CENTER" spacing="10.0"
+                          style="-fx-background-color: #E8F5E9; -fx-padding: 30; -fx-background-radius: 10;"
+                          prefWidth="200.0" prefHeight="150.0" GridPane.columnIndex="1">
+                        <Label text="👥" style="-fx-font-size: 40;" />
+                        <Label fx:id="lblTotalUsuarios" text="0"
+                               style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: #388E3C;" />
+                        <Label text="Usuarios Activos" style="-fx-font-size: 14; -fx-text-fill: #666;" />
+                    </VBox>
+
+                    <VBox alignment="CENTER" spacing="10.0"
+                          style="-fx-background-color: #FFF3E0; -fx-padding: 30; -fx-background-radius: 10;"
+                          prefWidth="200.0" prefHeight="150.0" GridPane.columnIndex="2">
+                        <Label text="📋" style="-fx-font-size: 40;" />
+                        <Label fx:id="lblPrestamosActivos" text="0"
+                               style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: #F57C00;" />
+                        <Label text="Préstamos Activos" style="-fx-font-size: 14; -fx-text-fill: #666;" />
+                    </VBox>
+
+                    <VBox alignment="CENTER" spacing="10.0"
+                          style="-fx-background-color: #FFEBEE; -fx-padding: 30; -fx-background-radius: 10;"
+                          prefWidth="200.0" prefHeight="150.0" GridPane.columnIndex="3">
+                        <Label text="⚠" style="-fx-font-size: 40;" />
+                        <Label fx:id="lblPrestamosRetrasados" text="0"
+                               style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: #D32F2F;" />
+                        <Label text="Retrasados" style="-fx-font-size: 14; -fx-text-fill: #666;" />
+                    </VBox>
+                </GridPane>
+
+                <Button text="🔄 Actualizar Estadísticas"
+                        onAction="#cargarEstadisticas"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </Button>
+            </VBox>
+
+        </StackPane>
+    </center>
+
+    <!-- FOOTER -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="10.0"
+              style="-fx-background-color: #f5f5f5; -fx-padding: 10;">
+            <Label text="© 2025 Biblioteca Inteligente 1.0" textFill="#666666">
+                <font>
+                    <Font size="11.0" />
+                </font>
+            </Label>
+            <Label text="|" textFill="#999999" />
+            <Label fx:id="lblFechaHora" text="Fecha y Hora" textFill="#666666">
+                <font>
+                    <Font size="11.0" />
+                </font>
+            </Label>
+        </HBox>
+    </bottom>
+
+</BorderPane>
