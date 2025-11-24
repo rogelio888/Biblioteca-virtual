@@ -23,7 +23,7 @@ CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
-    tipo ENUM('ADMINISTRADOR', 'BIBLIOTECARIO', 'USUARIO') NOT NULL DEFAULT 'USUARIO',
+    tipo ENUM('ADMINISTRADOR', 'BIBLIOTECARIO', 'LECTOR') NOT NULL DEFAULT 'LECTOR',
     email VARCHAR(150) NOT NULL UNIQUE,
     telefono VARCHAR(20),
     direccion VARCHAR(255),
@@ -131,8 +131,8 @@ DELIMITER ;
 INSERT INTO usuarios (nombre, apellido, tipo, email, telefono, direccion, fecha_registro, username, password, activo) VALUES
 ('Admin', 'Sistema', 'ADMINISTRADOR', 'admin@biblioteca.com', '555-0001', 'Calle Principal 123', CURDATE(), 'admin', 'admin123', TRUE),
 ('María', 'García', 'BIBLIOTECARIO', 'maria.garcia@biblioteca.com', '555-0002', 'Av. Central 456', CURDATE(), 'mgarcia', 'biblio123', TRUE),
-('Juan', 'Pérez', 'USUARIO', 'juan.perez@email.com', '555-0003', 'Calle Secundaria 789', CURDATE(), 'jperez', 'user123', TRUE),
-('Ana', 'Martínez', 'USUARIO', 'ana.martinez@email.com', '555-0004', 'Av. Norte 321', CURDATE(), 'amartinez', 'user123', TRUE);
+('Juan', 'Pérez', 'LECTOR', 'juan.perez@email.com', '555-0003', 'Calle Secundaria 789', CURDATE(), 'jperez', 'user123', TRUE),
+('Ana', 'Martínez', 'LECTOR', 'ana.martinez@email.com', '555-0004', 'Av. Norte 321', CURDATE(), 'amartinez', 'user123', TRUE);
 
 -- Insertar libros de prueba
 INSERT INTO libros (titulo, autor, categoria, stock, anio_publicacion, isbn, editorial) VALUES
