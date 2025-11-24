@@ -20,7 +20,7 @@ public class DatabaseConnection {
     // Configuración de la base de datos
     private static final String URL = "jdbc:mysql://localhost:3306/biblioteca_db";
     private static final String USUARIO = "root";
-    private static final String PASSWORD = "20012005"; // ⬅️ CAMBIAR AQUÍ TU CONTRASEÑA DE MYSQL
+    private static final String PASSWORD = ""; // Contraseña de MySQL (vacía por defecto en XAMPP)
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     // Instancia única (Singleton)
@@ -148,8 +148,7 @@ public class DatabaseConnection {
                 return String.format(
                         "Conexión activa - Base de datos: %s, Usuario: %s",
                         conexion.getCatalog(),
-                        USUARIO
-                );
+                        USUARIO);
             } else {
                 return "No hay conexión activa";
             }
